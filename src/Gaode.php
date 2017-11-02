@@ -15,6 +15,8 @@ use Hanson\Foundation\Foundation;
 class Gaode extends Foundation
 {
 
+    const API = 'http://restapi.amap.com/v3/';
+    
     const GEO_CODE_URI = 'http://restapi.amap.com/v3/geocode/geo';
     const GEO_DECODE_URI = 'http://restapi.amap.com/v3/geocode/regeo';
     const DIRECTION_WALKING_URI = 'http://restapi.amap.com/v3/direction/walking';
@@ -81,9 +83,12 @@ class Gaode extends Foundation
         return $this->api->request(self::DISTANCE_URI, $params);
     }
 
-//    public function ()
-//    {
-//
-//    }
+    /**
+     * 地址输入提示
+     */
+    public function inputTips(array $params)
+    {
+        return $this->api->request(self::API.'assistant/inputtips', $params);
+    }
 
 }
