@@ -16,14 +16,6 @@ class Gaode extends Foundation
 {
 
     const API = 'http://restapi.amap.com/v3/';
-    
-    const GEO_CODE_URI = 'http://restapi.amap.com/v3/geocode/geo';
-    const GEO_DECODE_URI = 'http://restapi.amap.com/v3/geocode/regeo';
-    const DIRECTION_WALKING_URI = 'http://restapi.amap.com/v3/direction/walking';
-    const DIRECTION_TRANSIT_URI = 'http://restapi.amap.com/v3/direction/transit/integrated';
-    const DIRECTION_DRIVING_URI = 'http://restapi.amap.com/v3/direction/driving';
-    const DISTANCE_URI = 'http://restapi.amap.com/v3/distance';
-
 
     protected $providers = [
         ServiceProvider::class
@@ -31,12 +23,12 @@ class Gaode extends Foundation
 
     public function geo(array $params)
     {
-        return $this->api->request(self::GEO_CODE_URI, $params);
+        return $this->api->request(self::API . 'geocode/geo', $params);
     }
 
     public function regeo(array $params)
     {
-        return $this->api->request(self::GEO_DECODE_URI, $params);
+        return $this->api->request(self::API . 'geocode/regeo', $params);
     }
 
     /**
@@ -47,7 +39,7 @@ class Gaode extends Foundation
      */
     public function directionWalking(array $params)
     {
-        return $this->api->request(self::DIRECTION_WALKING_URI, $params);
+        return $this->api->request(self::API . 'direction/walking', $params);
     }
 
     /**
@@ -58,7 +50,7 @@ class Gaode extends Foundation
      */
     public function directionTransit(array $params)
     {
-        return $this->api->request(self::DIRECTION_TRANSIT_URI, $params);
+        return $this->api->request(self::API . 'direction/transit/integrated', $params);
     }
 
     /**
@@ -69,7 +61,7 @@ class Gaode extends Foundation
      */
     public function directionDriving(array $params)
     {
-        return $this->api->request(self::DIRECTION_DRIVING_URI, $params);
+        return $this->api->request(self::API . 'direction/driving', $params);
     }
 
     /**
@@ -80,15 +72,18 @@ class Gaode extends Foundation
      */
     public function distance(array $params)
     {
-        return $this->api->request(self::DISTANCE_URI, $params);
+        return $this->api->request(self::API . 'distance', $params);
     }
 
     /**
      * 地址输入提示
+     *
+     * @param array $params
+     * @return mixed
      */
     public function inputTips(array $params)
     {
-        return $this->api->request(self::API.'assistant/inputtips', $params);
+        return $this->api->request(self::API . 'assistant/inputtips', $params);
     }
 
 }
