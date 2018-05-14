@@ -15,7 +15,7 @@ use Hanson\Foundation\Foundation;
 class Gaode extends Foundation
 {
 
-    const API = 'http://restapi.amap.com/v3/';
+    const API = 'http://restapi.amap.com/';
 
     protected $providers = [
         ServiceProvider::class
@@ -23,12 +23,12 @@ class Gaode extends Foundation
 
     public function geo(array $params)
     {
-        return $this->api->request(self::API . 'geocode/geo', $params);
+        return $this->api->request(self::API  . 'v3/geocode/geo', $params);
     }
 
     public function regeo(array $params)
     {
-        return $this->api->request(self::API . 'geocode/regeo', $params);
+        return $this->api->request(self::API  . 'v3/geocode/regeo', $params);
     }
 
     /**
@@ -39,7 +39,18 @@ class Gaode extends Foundation
      */
     public function directionWalking(array $params)
     {
-        return $this->api->request(self::API . 'direction/walking', $params);
+        return $this->api->request(self::API  . 'v3/direction/walking', $params);
+    }
+
+    /**
+     * 骑行路径规划
+     *
+     * @param array $params
+     * @return mixed
+     */
+    public function directionBicycling(array $params)
+    {
+        return $this->api->request(self::API . 'v4/direction/bicycling', $params);
     }
 
     /**
@@ -50,7 +61,7 @@ class Gaode extends Foundation
      */
     public function directionTransit(array $params)
     {
-        return $this->api->request(self::API . 'direction/transit/integrated', $params);
+        return $this->api->request(self::API  . 'v3/direction/transit/integrated', $params);
     }
 
     /**
@@ -61,7 +72,7 @@ class Gaode extends Foundation
      */
     public function directionDriving(array $params)
     {
-        return $this->api->request(self::API . 'direction/driving', $params);
+        return $this->api->request(self::API  . 'v3/direction/driving', $params);
     }
 
     /**
@@ -72,7 +83,7 @@ class Gaode extends Foundation
      */
     public function distance(array $params)
     {
-        return $this->api->request(self::API . 'distance', $params);
+        return $this->api->request(self::API  . 'v3/distance', $params);
     }
 
     /**
@@ -83,7 +94,7 @@ class Gaode extends Foundation
      */
     public function inputTips(array $params)
     {
-        return $this->api->request(self::API . 'assistant/inputtips', $params);
+        return $this->api->request(self::API  . 'v3/assistant/inputtips', $params);
     }
 
 }
