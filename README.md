@@ -3,7 +3,7 @@
 
 ## 安装
 
-`composer require hanson/gaode-sdk:dev-master -vvv`
+`composer require hanson/gaode-sdk -vvv`
 
 ## 使用
 
