@@ -20,12 +20,10 @@ class ServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $pimple)
     {
-        $pimple['access_token'] = function($pimple) {
-            return new AccessToken($pimple['config']['key'], $pimple['config']->get('sig'));
-        };
-
         $pimple['api'] = function($pimple) {
-            return new Api($pimple['access_token']);
+            $config = $pimple->getConfig();
+
+            return new Api($config['key']);
         };
     }
 }

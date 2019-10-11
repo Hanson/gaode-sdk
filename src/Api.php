@@ -13,19 +13,20 @@ class Api
      * @var Http
      */
     private $http;
-    /**
-     * @var AccessToken
-     */
-    private $accessToken;
 
-    public function __construct(AccessToken $accessToken)
+    /**
+     * @var string
+     */
+    private $key;
+
+    public function __construct(string $key)
     {
-        $this->accessToken = $accessToken;
+        $this->key = $key;
     }
 
     public function request($url, $params)
     {
-        $params = array_merge($params, ['key' => $this->accessToken->getKey()]);
+        $params = array_merge($params, ['key' => $this->key]);
 
         $response = $this->getHttp()->get($url, $params);
 
